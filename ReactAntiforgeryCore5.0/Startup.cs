@@ -61,6 +61,7 @@ namespace ReactAntiforgeryCore5._0
                     var tokens = antiforgery.GetTokens(context);
                     if (tokens.CookieToken != null)
                     {
+                        // The CookieToken is not available when the client already has the cookie, hence the null check.
                         context.Response.Cookies.Append("X-CSRF-TOKEN", tokens.CookieToken, new CookieOptions { HttpOnly = false });
                     }
                     context.Response.Cookies.Append("X-CSRF-FORM-TOKEN", tokens.RequestToken, new CookieOptions { HttpOnly = false });
