@@ -1,6 +1,6 @@
 using System;
 
-namespace ReactAntiforgeryCore5._0
+namespace ReactAppWithAntiforgery
 {
     public class WeatherForecast
     {

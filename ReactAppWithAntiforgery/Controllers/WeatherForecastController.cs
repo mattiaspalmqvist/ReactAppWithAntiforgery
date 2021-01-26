@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ReactAntiforgeryCore5._0.Controllers
+namespace ReactAppWithAntiforgery.Controllers
 {
     [ApiController]
     [Route("[controller]")]

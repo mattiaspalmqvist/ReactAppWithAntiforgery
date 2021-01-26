@@ -7,10 +7,8 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Text.Json;
 
-namespace ReactAntiforgeryCore5._0
+namespace ReactAppWithAntiforgery
 {
     public class Startup
     {

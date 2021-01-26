@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ReactAntiforgeryCore5._0
+namespace ReactAppWithAntiforgery
 {
     public class Program
     {

@@ -1,6 +1,6 @@
 {
-  "short_name": "ReactAntiforgeryCore5._0",
-  "name": "ReactAntiforgeryCore5._0",
+  "short_name": "ReactAppWithAntiforgery",
+  "name": "ReactAppWithAntiforgery",
   "icons": [
     {
       "src": "favicon.ico",
