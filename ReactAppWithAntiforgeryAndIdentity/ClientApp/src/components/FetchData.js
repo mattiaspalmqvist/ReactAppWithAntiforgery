@@ -1,21 +1,6 @@
 import React, { Component } from 'react';
 import authService from './api-authorization/AuthorizeService'
-
-let getCookie = cname => {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) === ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) === 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
+import antiforgeryService from './AntiforgeryService';
 
 export class FetchData extends Component {
     static displayName = FetchData.name;
@@ -70,18 +55,17 @@ export class FetchData extends Component {
 
     async populateWeatherData() {
         let token = await authService.getAccessToken();
-        token = null;
         const response = await fetch('WeatherForecast/PostWeather', {
             method: 'POST',
             headers: !token ?
                 new Headers({
                     'Accept': 'application/json',
-                    'RequestVerificationToken': getCookie("X-CSRF-FORM-TOKEN")
+                    'RequestVerificationToken': antiforgeryService.getCookie("X-CSRF-FORM-TOKEN")
                 }) :
                 new Headers({
                     'Authorization': `Bearer ${token}`,
                     'Accept': 'application/json',
-                    'RequestVerificationToken': getCookie("X-CSRF-FORM-TOKEN")
+                    'RequestVerificationToken': antiforgeryService.getCookie("X-CSRF-FORM-TOKEN")
                 })
         });
         const data = await response.json();

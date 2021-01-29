@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace ReactAppWithAntiforgeryAndIdentity.Controllers
 {
-    [AllowAnonymous]
-    [AutoValidateAntiforgeryToken]
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase

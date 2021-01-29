@@ -2,10 +2,6 @@ using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -76,20 +72,7 @@ namespace ReactAppWithAntiforgeryAndIdentity
 
             app.UseRouting();
 
-            app.Use(next => context =>
-            {
-                if (context.Request.Path == "/")
-                {
-                    var tokens = antiforgery.GetTokens(context);
-                    if (tokens.CookieToken != null)
-                    {
-                        // The CookieToken is not available when the client already has the cookie, hence the null check.
-                        context.Response.Cookies.Append("X-CSRF-TOKEN", tokens.CookieToken, new CookieOptions { HttpOnly = false });
-                    }
-                    context.Response.Cookies.Append("X-CSRF-FORM-TOKEN", tokens.RequestToken, new CookieOptions { HttpOnly = false });
-                }
-                return next(context);
-            });
+            app.UseAntiforgeryTokens();
 
             app.UseAuthentication();
             app.UseIdentityServer();
