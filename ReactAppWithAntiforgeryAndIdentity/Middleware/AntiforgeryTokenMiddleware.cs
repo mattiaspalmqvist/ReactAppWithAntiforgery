@@ -4,12 +4,12 @@ using Microsoft.AspNetCore.Http;
 
 namespace ReactAppWithAntiforgeryAndIdentity.Middleware
 {
-    public class AntiforgeryTokenHandler
+    public class AntiforgeryTokenMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly IAntiforgery _antiforgery;
 
-        public AntiforgeryTokenHandler(RequestDelegate next, IAntiforgery antiforgery)
+        public AntiforgeryTokenMiddleware(RequestDelegate next, IAntiforgery antiforgery)
         {
             _next = next;
             _antiforgery = antiforgery;

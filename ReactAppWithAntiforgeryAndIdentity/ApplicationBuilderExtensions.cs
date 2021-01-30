@@ -7,7 +7,7 @@ namespace ReactAppWithAntiforgeryAndIdentity
     {
         public static IApplicationBuilder UseAntiforgeryTokens(this IApplicationBuilder app)
         {
-            return app.UseMiddleware<AntiforgeryTokenHandler>();
+            return app.UseMiddleware<AntiforgeryTokenMiddleware>();
         }
     }
 }
